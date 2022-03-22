@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-//TODO: Step 2 - Import the rFlutter_Alert package here.
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'quiz_brain.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
-void main() => runApp(Quizzler());
+void main() => runApp(Quizzy());
 
-class Quizzler extends StatelessWidget {
+class Quizzy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     quizBrain.getUsedQuestion();
     return MaterialApp(
       home: Scaffold(
-
         backgroundColor: Colors.grey.shade900,
         body: Container(
           decoration: BoxDecoration(
@@ -43,9 +41,6 @@ class _QuizPageState extends State<QuizPage> {
     bool correctAnswer = quizBrain.getCorrectAnswer();
 
     setState(() {
-      //TODO: Step 4 - Use IF/ELSE to check if we've reached the end of the quiz. If so,
-      //On the next line, you can also use if (quizBrain.isFinished()) {}, it does the same thing.
-
       if (userPickedAnswer == correctAnswer) {
         answerCount++;
         scoreKeeper.add(Icon(
@@ -60,12 +55,6 @@ class _QuizPageState extends State<QuizPage> {
       }
 
       if (quizBrain.isFinished() == true) {
-        //TODO Step 4 Part A - show an alert using rFlutter_alert,
-
-        //This is the code for the basic alert from the docs for rFlutter Alert:
-        //Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.").show();
-
-        //Modified for our purposes:
         Alert(
           context: context,
           title: 'Finished!',
@@ -75,14 +64,12 @@ class _QuizPageState extends State<QuizPage> {
         answerCount = 0;
         quizBrain.getUsedQuestion();
 
-        //TODO Step 4 Part C - reset the questionNumber,
+        //reset question number
         quizBrain.reset();
 
-        //TODO Step 4 Part D - empty out the scoreKeeper.
+        //reset scores
         scoreKeeper = [];
       }
-
-      //TODO: Step 6 - If we've not reached the end, ELSE do the answer checking steps below 👇
       else {
         quizBrain.nextQuestion();
       }
