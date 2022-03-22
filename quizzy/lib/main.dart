@@ -63,9 +63,9 @@ class _QuizPageState extends State<QuizPage> {
         
         answerCount = 0;
         quizBrain.getUsedQuestion();
-        //reset the question number,
+        //reset the question number
         quizBrain.reset();
-        //empty out the score.
+        //empty out the score
         scoreKeeper = [];
       }
       else {
@@ -110,7 +110,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //true.
+                //true
                 checkAnswer(true);
               },
             ),
@@ -129,7 +129,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //false.
+                //false
                 checkAnswer(false);
               },
             ),
