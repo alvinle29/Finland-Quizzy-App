@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//TODO: Step 2 - Import the rFlutter_Alert package here.
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'quiz_brain.dart';
 
@@ -13,7 +12,6 @@ class Quizzler extends StatelessWidget {
     quizBrain.getUsedQuestion();
     return MaterialApp(
       home: Scaffold(
-
         backgroundColor: Colors.grey.shade900,
         body: Container(
           decoration: BoxDecoration(
@@ -43,9 +41,6 @@ class _QuizPageState extends State<QuizPage> {
     bool correctAnswer = quizBrain.getCorrectAnswer();
 
     setState(() {
-      //TODO: Step 4 - Use IF/ELSE to check if we've reached the end of the quiz. If so,
-      //On the next line, you can also use if (quizBrain.isFinished()) {}, it does the same thing.
-
       if (userPickedAnswer == correctAnswer) {
         answerCount++;
         scoreKeeper.add(Icon(
@@ -60,29 +55,19 @@ class _QuizPageState extends State<QuizPage> {
       }
 
       if (quizBrain.isFinished() == true) {
-        //TODO Step 4 Part A - show an alert using rFlutter_alert,
-
-        //This is the code for the basic alert from the docs for rFlutter Alert:
-        //Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.").show();
-
-        //Modified for our purposes:
         Alert(
           context: context,
           title: 'Finished!',
           desc: 'You\'ve reached the end of the quiz. You got $answerCount/10 right.',
         ).show();
-
+        
         answerCount = 0;
         quizBrain.getUsedQuestion();
-
-        //TODO Step 4 Part C - reset the questionNumber,
+        //reset the question number,
         quizBrain.reset();
-
-        //TODO Step 4 Part D - empty out the scoreKeeper.
+        //empty out the score.
         scoreKeeper = [];
       }
-
-      //TODO: Step 6 - If we've not reached the end, ELSE do the answer checking steps below 👇
       else {
         quizBrain.nextQuestion();
       }
@@ -125,7 +110,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked true.
+                //true.
                 checkAnswer(true);
               },
             ),
@@ -144,7 +129,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked false.
+                //false.
                 checkAnswer(false);
               },
             ),
